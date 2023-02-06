@@ -38,9 +38,7 @@ export default function Router() {
         {
           path: 'register',
           element: (
-            <GuestGuard>
               <RegisterPage />
-            </GuestGuard>
           ),
         },
       ],

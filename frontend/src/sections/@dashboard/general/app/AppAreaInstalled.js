@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // @mui
 import { Card, CardHeader, Box } from '@mui/material';
 // components
@@ -17,7 +17,7 @@ AppAreaInstalled.propTypes = {
 export default function AppAreaInstalled({ title, subheader, chart, ...other }) {
   const { colors, categories, series, options } = chart;
 
-  const [seriesData, setSeriesData] = useState(series[0]?.month);
+  const [seriesData, setSeriesData] = useState("");
 
   const chartOptions = useChart({
     colors,
@@ -27,6 +27,10 @@ export default function AppAreaInstalled({ title, subheader, chart, ...other }) 
     ...options,
   });
 
+  useEffect(()=>{
+    setSeriesData(series[0]?.month)
+  },[series])
+
   return (
     <Card {...other}>
       <CardHeader
@@ -34,8 +38,8 @@ export default function AppAreaInstalled({ title, subheader, chart, ...other }) 
         subheader={subheader}
         action={
           <CustomSmallSelect value={seriesData} onChange={(event) => setSeriesData(event.target.value)}>
-            {series.map((option) => (
-              <option key={option.month} value={option.month}>
+            {series.map((option,ind) => (
+              <option  key={option.month} value={option.month}>
                 {option.month}
               </option>
             ))}

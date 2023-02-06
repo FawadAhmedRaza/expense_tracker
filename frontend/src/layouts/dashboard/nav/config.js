@@ -38,10 +38,10 @@ const navConfig = [
   {
     subheader: 'general',
     items: [
+      { title: 'Dashboard', path: '/dashboard', icon: ICONS.dashboard },
       { title: 'Assets', path: '/assets', icon: ICONS.dashboard },
       { title: 'Expense', path: '/expense', icon: ICONS.analytics },
       { title: 'Transactions', path: '/transactions', icon: ICONS.banking },
-      { title: 'Dashboard', path: '/dashboard', icon: ICONS.dashboard },
     ],
   },
 ];

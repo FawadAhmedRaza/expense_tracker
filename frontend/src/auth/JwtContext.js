@@ -129,7 +129,7 @@ export function AuthProvider({ children }) {
 
   // REGISTER
   const register = async (email, password, firstName, lastName) => {
-    const response = await axios.post('/auth/login/register', {
+    const response = await axios.post('/auth/register', {
       email,
       password,
       first_name: firstName,

@@ -28,14 +28,14 @@ export default function Dashboard() {
       .catch((err) => console.log(err));
   }, []);
 
-  const groupedData = amount.reduce((acc, curr) => {
-    const month = curr.month;
-    if (!acc[month]) {
-      acc[month] = [];
-    }
-    acc[month].push(curr);
-    return acc;
-  }, {});
+  // const groupedData = amount.reduce((acc, curr) => {
+  //   const month = curr.month;
+  //   if (!acc[month]) {
+  //     acc[month] = [];
+  //   }
+  //   acc[month].push(curr);
+  //   return acc;
+  // }, {});
   const months = [
     '',
     'jan',
@@ -52,24 +52,56 @@ export default function Dashboard() {
     'december',
   ];
 
-  const allKeys = Object.keys(groupedData);
-  const allValues = Object.values(groupedData);
+  // const allKeys = Object.keys(groupedData);
+  // const allValues = Object.values(groupedData);
 
-  const manupulate = allValues.map((cur, index) => ({
-    month: months[allKeys[index]],
-    data: [{ name: cur[index]?.expense_title, data: cur?.map(({ amount }) => amount) }],
-  }));
+  // const manupulate = allValues.map((cur, index) => ({
+  //   month: months[allKeys[index]],
+  //   data: [{ name: cur[index]?.expense_title, data: cur?.map(({ amount }) => amount) }],
+  // }));
+  const result = [];
 
-  console.log(manupulate, manupulate, 'manupulate');
+  const groupedDataByMonth = amount.reduce((acc, curr) => {
+    const month = months[curr.month];
+    if (!acc[month]) {
+      acc[month] = [];
+    }
+    acc[month].push(curr);
+    return acc;
+  }, {});
+  
+  Object.entries(groupedDataByMonth).forEach(([month, expensesByMonth]) => {
+    const groupedDataByExpenseTitle = expensesByMonth.reduce((acc, curr) => {
+      const expenseTitle = curr.expense_title;
+      if (!acc[expenseTitle]) {
+        acc[expenseTitle] = [];
+      }
+      acc[expenseTitle].push(curr.amount);
+      return acc;
+    }, {});
+  
+    result.push({
+      month,
+      data: Object.entries(groupedDataByExpenseTitle).map(([expenseTitle, amounts]) => ({
+        name: expenseTitle,
+        data: amounts
+      }))
+    });
+  });
+  
+  
+  console.log(result,"expenseHeads");
+  // console.log(manupulate, manupulate, 'manupulate');
   return (
     <>
       <Grid item xs={12} md={12} lg={12}>
         <AppAreaInstalled
-          title="Expense "
-          subheader="(+43%) than last year"
+          title="Expense"
           chart={{
             categories: expenseHeads,
-            series: manupulate,
+            series: [
+              ...result
+            ],
           }}
         />
       </Grid>

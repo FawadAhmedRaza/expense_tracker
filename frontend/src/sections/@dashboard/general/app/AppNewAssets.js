@@ -118,14 +118,14 @@ function AppNewInvoiceRow({ row }) {
         <TableCell>{row.expense}</TableCell>
         <TableCell>{row.balance}</TableCell>
 
-        <TableCell align="right">
+        {/* <TableCell align="right">
           <IconButton color={openPopover ? 'inherit' : 'default'} onClick={handleOpenPopover}>
             <Iconify icon="eva:more-vertical-fill" />
           </IconButton>
-        </TableCell>
+        </TableCell> */}
       </TableRow>
 
-      <MenuPopover open={openPopover} onClose={handleClosePopover} arrow="right-top" sx={{ width: 160 }}>
+      {/* <MenuPopover open={openPopover} onClose={handleClosePopover} arrow="right-top" sx={{ width: 160 }}>
         <MenuItem onClick={handleDownload}>
           <Iconify icon="eva:download-fill" />
           Download
@@ -147,7 +147,7 @@ function AppNewInvoiceRow({ row }) {
           <Iconify icon="eva:trash-2-outline" />
           Delete
         </MenuItem>
-      </MenuPopover>
+      </MenuPopover> */}
     </>
   );
 }
