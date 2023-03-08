@@ -1,31 +1,30 @@
 import { Grid } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { AppAreaInstalled, AppNewAssets } from '../../sections/@dashboard/general/app';
-import { getAllAssets, getAllExpenseCategories, getAllTransactions } from '../../api/index';
 
 export default function Dashboard() {
   const [expenseHeads, setExpenseHeads] = useState([]);
   const [amount, setAmount] = useState([]);
   const [assets, setAssets] = useState([]);
   useEffect(() => {
-    getAllExpenseCategories()
-      .then((res) => {
-        const categories = res?.data?.data.map((cur) => cur.title);
-        setExpenseHeads(categories);
-        console.log(categories);
-      })
-      .catch((err) => console.log(err));
-    getAllTransactions()
-      .then((res) => {
-        const amount = res?.data?.data;
-        setAmount(amount);
-      })
-      .catch((err) => console.log(err));
-    getAllAssets()
-      .then((res) => {
-        setAssets(res?.data?.data);
-      })
-      .catch((err) => console.log(err));
+    // getAllExpenseCategories()
+    //   .then((res) => {
+    //     const categories = res?.data?.data.map((cur) => cur.title);
+    //     setExpenseHeads(categories);
+    //     console.log(categories);
+    //   })
+    //   .catch((err) => console.log(err));
+    // getAllTransactions()
+    //   .then((res) => {
+    //     const amount = res?.data?.data;
+    //     setAmount(amount);
+    //   })
+    //   .catch((err) => console.log(err));
+    // getAllAssets()
+    //   .then((res) => {
+    //     setAssets(res?.data?.data);
+    //   })
+    //   .catch((err) => console.log(err));
   }, []);
 
   // const groupedData = amount.reduce((acc, curr) => {

@@ -3,7 +3,6 @@
 import Label from '../../../components/label';
 import Iconify from '../../../components/iconify';
 import SvgColor from '../../../components/svg-color';
-
 // ----------------------------------------------------------------------
 
 const icon = (name) => <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{ width: 1, height: 1 }} />;
@@ -39,7 +38,18 @@ const navConfig = [
     subheader: 'general',
     items: [
       { title: 'Dashboard', path: '/dashboard', icon: ICONS.dashboard },
-      { title: 'Assets', path: '/assets', icon: ICONS.dashboard },
+      { title: 'Products', path: '/product', icon: ICONS.file, 
+      children: [
+        { title: 'create', path: '/product/create' },
+        {title:'list',path:'/product/list'}
+        
+      ], },
+      { title: 'Categories', path: '/category', icon: ICONS.file, 
+      children: [
+        { title: 'create', path: '/category/create' },
+        // {title:'list',path:'/product/list'}
+        
+      ], },
       { title: 'Expense', path: '/expense', icon: ICONS.analytics },
       { title: 'Transactions', path: '/transactions', icon: ICONS.banking },
     ],

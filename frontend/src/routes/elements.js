@@ -18,6 +18,10 @@ export const LoginPage = Loadable(lazy(() => import('../pages/auth/LoginPage')))
 export const RegisterPage = Loadable(lazy(() => import('../pages/auth/RegisterPage')));
 export const BlankPage = Loadable(lazy(() => import('../pages/dashboard/BlankPage')));
 export const Dashboard = Loadable(lazy(() => import('../pages/dashboard/IndexPage')));
+export const ProductCreatePage = Loadable(lazy(() => import('../pages/dashboard/ProductCreatePage')));
+export const CategoryCreatePage = Loadable(lazy(() => import('../pages/dashboard/CategoryCreatePage')));
+export const ProductList = Loadable(lazy(() => import('../pages/dashboard/ProductListPage')));
+
 // MAIN
 export const Page500 = Loadable(lazy(() => import('../pages/Page500')));
 export const Page403 = Loadable(lazy(() => import('../pages/Page403')));

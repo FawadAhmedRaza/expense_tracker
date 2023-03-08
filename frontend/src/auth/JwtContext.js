@@ -88,7 +88,7 @@ export function AuthProvider({ children }) {
         dispatch({
           type: 'INITIAL',
           payload: {
-            isAuthenticated: false,
+            isAuthenticated: true,
             user: null,
           },
         });
@@ -98,7 +98,7 @@ export function AuthProvider({ children }) {
       dispatch({
         type: 'INITIAL',
         payload: {
-          isAuthenticated: false,
+          isAuthenticated: true,
           user: null,
         },
       });

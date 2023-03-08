@@ -1,5 +1,5 @@
 import { Navigate, useRoutes } from 'react-router-dom';
-import CreateAssets from '../pages/assets/CreateAssets';
+import CreateProducts from '../pages/dashboard/ProductCreatePage';
 import CreateExpenseHeads from '../pages/expenses/CreateExpenseHeads';
 import CreateTransaction from '../pages/transactions/CreateTransaction';
 // auth
@@ -19,6 +19,9 @@ import {
   RegisterPage,
   BlankPage,
   Dashboard,
+  ProductCreatePage,
+  ProductList,
+  CategoryCreatePage
 } from './elements';
 // ----------------------------------------------------------------------
 export default function Router() {
@@ -52,22 +55,34 @@ export default function Router() {
         </AuthGuard>
       ),
       children: [
+        // {
+        //   path: 'dashboard',
+        //   element: <Dashboard />,
+        // },
         {
-          path: 'dashboard',
-          element: <Dashboard />,
+          path: 'product',
+          children: [
+            { element: <Navigate to="/dashboard/product/list" replace />, index: true },
+            { path: 'create', element: <ProductCreatePage /> },
+            { path: 'list', element: <ProductList /> },
+          ],
         },
         {
-          path: 'assets',
-          element: <CreateAssets />,
+          path: 'category',
+          children: [
+            { element: <Navigate to="/dashboard/category/create" replace />, index: true },
+            { path: 'create', element: <CategoryCreatePage /> },
+            // { path: 'list', element: <ProductList /> },
+          ],
         },
-        {
-          path: 'expense',
-          element: <CreateExpenseHeads />,
-        },
-        {
-          path: 'transactions',
-          element: <CreateTransaction />,
-        },
+        // {
+        //   path: 'expense',
+        //   element: <CreateExpenseHeads />,
+        // },
+        // {
+        //   path: 'transactions',
+        //   element: <CreateTransaction />,
+        // },
       ],
     },
 

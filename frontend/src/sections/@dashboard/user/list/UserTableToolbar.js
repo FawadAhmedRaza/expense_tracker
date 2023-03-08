@@ -57,8 +57,8 @@ export default function UserTableToolbar({
       >
         {optionsRole.map((option) => (
           <MenuItem
-            key={option}
-            value={option}
+            key={option.id}
+            value={option.id}
             sx={{
               mx: 1,
               my: 0.5,
@@ -69,7 +69,7 @@ export default function UserTableToolbar({
               '&:last-of-type': { mb: 0 },
             }}
           >
-            {option}
+            {option.name_en}
           </MenuItem>
         ))}
       </TextField>
